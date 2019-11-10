@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+
+    <svg class="chart"></svg>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script>
+      var param1 = <%- bD %>;
+      var param2 = <%- rM %>;
+      var margin = {"top": 20, "right": 10, "bottom": 20, "left": 30 }
+      var width = 500;
+      var height = 500;
+      var rectWidth = 100;
+      var data = [
+        {name: "Biodegradable",    value:  param1},
+        {name: "Recycled Materials",    value:  param2}
+      ];
+      var margin = {top: 20, right: 30, bottom: 30, left: 40},
+          width = 960 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom;
+
+      var x = d3.scale.ordinal()
+          .rangeRoundBands([0, width], .1);
+
+      var y = d3.scale.linear()
+          .range([height, 0]);
+
+      var xAxis = d3.svg.axis()
+          .scale(x)
+          .orient("bottom");
+
+      var yAxis = d3.svg.axis()
+          .scale(y)
+          .orient("left");
+
+      var chart = d3.select(".chart")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      var colors = d3.scale.ordinal().domain(['Biodegradable','Recycled-Materials'])
+      .range(['green', 'blue'])
+
+      x.domain(data.map(function(d) { return d.name; }));
+      y.domain([0, 100]);
+
+      chart.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+      chart.append("g")
+            .attr("class", "y axis")
+            .call(yAxis);
+
+      chart.selectAll(".bar")
+          .data(data)
+          .enter().append("rect")
+          .attr("class", function(d, i) { return 'bar_' + d.name} )
+          .attr("x", function(d) { return x(d.name); })
+          .attr("fill", function(d, i) {return colors(d.name)})
+          .attr("y", function(d) { return y(d.value); })
+          .attr("height", function(d) { return height - y(d.value); })
+          .attr("width", x.rangeBand());
+
+      function type(d) {
+        d.value = +d.value; // coerce to number
+        return d;
+      }
+    </script>
+
+  </body>

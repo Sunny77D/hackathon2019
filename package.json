@@ -1,0 +1,24 @@
+{
+  "name": "hackathon2019",
+  "version": "1.0.0",
+  "description": "HackPrinceton Webapp for SPC",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sunny77D/hackathon2019.git"
+  },
+  "keywords": [
+    "SPC",
+    "MVP",
+    "HackPrinceton"
+  ],
+  "author": "Son Do",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sunny77D/hackathon2019/issues"
+  },
+  "homepage": "https://github.com/Sunny77D/hackathon2019#readme"
+}
