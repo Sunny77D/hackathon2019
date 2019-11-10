@@ -14,9 +14,9 @@ app.set('view engine', 'ejs')
 // Getting Parameters from Qr Code Scan
 app.get('/', function (req, res) {
   // Access the provided 'page' and 'limt' query parameters
-  let bD = req.query.bD;
+  // let bD = req.query.bD;
   let rM = req.query.rM;
-  res.render('index', {bD: bD, rM: rM});
+  res.render('index', {rM: rM});
 })
 
 
