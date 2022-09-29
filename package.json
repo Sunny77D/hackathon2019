@@ -23,7 +23,7 @@
   "homepage": "https://github.com/Sunny77D/hackathon2019#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "d3": "^5.12.0",
+    "d3": "^7.6.1",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "querystring": "^0.2.0",
